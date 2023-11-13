@@ -1,8 +1,8 @@
 #Нешерет Максим 
 #ІКСМ-1
-file = open("text.txt", "r", encoding = 'utf-8')
-read_content = file.read()
-print(read_content)
+with open("text.txt", "r", encoding='utf-8') as file:
+    read_content = file.read()
+
 file_content = read_content.split()
 
 word_count = {}
@@ -19,17 +19,15 @@ while True:
     print('2. Навести кількість появ певного слова у тексті.')
     print('3. Завершити програму.')
     choose = input(' Ваш вибір: ')
-    if choose == str(1):
+
+    if choose == '1':
         for word, count in word_count.items():
             print(f'{word}: {count}')
-    elif choose == str(2):
+    elif choose == '2':
         certain_word = input('Введіть певне слово: ')
-        try:
-            print(f"Слово {certain_word} з'являлось в тексті {word_count[certain_word]} разів.")
-        except:
-            print("Слово не з'являлось в тексті.")
-    elif choose == str(3):
+        print(f"Слово {certain_word} з'являлось в тексті {word_count.get(certain_word, 0)} разів.")
+    elif choose == '3':
         print('До побачення!')
-        exit()
+        break
     else:
         print('Виникла помилка при введенні, спробуйте знову.')
